@@ -1,7 +1,8 @@
 import "./App.css";
+import Product from "./assets/Components/Product";
 import Card from "/src/assets/Components/Card.jsx";
 
-function App() {
+function App(props) {
   const products = [
     {
       name: "Arial",
@@ -28,12 +29,13 @@ function App() {
       year: 2004,
     },
   ];
+  // console.log("props", props);
   return (
     <div className="container">
+      <Product data={products}></Product>
+      {/* <Card data={products}></Card>
       <Card data={products}></Card>
-      <Card data={products}></Card>
-      <Card data={products}></Card>
-      <Card data={products}></Card>
+      <Card data={products}></Card> */}
     </div>
   );
 }
