@@ -1,20 +1,28 @@
 import { useState } from "react";
 import "./Header.css";
 
+import { data } from "./Constant";
+
 function Logo() {
   return (
     <div className="logo">
       <a href="/">
-        <img
-          src="https://i.pinimg.com/originals/85/f0/63/85f063360f15625e86fe4d64ad00535c.png"
-          alt="logo"
-        />
+        <img src="/public/foodie-logo.png" alt="logo" />
       </a>
     </div>
   );
 }
+
 function NavLinks() {
   const [searchInput, setSearchInput] = useState("");
+
+  const handleSearch = (e) => {
+    if (e.key === "Enter") {
+      console.log("Enter clicked");
+      // const filteredData = filterData(searchInput, data);
+      // setRestaurantData(filteredData);
+    }
+  };
   return (
     <>
       <ul className="nav-list">
@@ -28,7 +36,7 @@ function NavLinks() {
             placeholder="Search"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            // onSubmit={}
+            onKeyDown={handleSearch}
           />
         </li>
         <li>

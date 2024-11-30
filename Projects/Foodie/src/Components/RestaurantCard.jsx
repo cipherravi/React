@@ -10,16 +10,22 @@ function RestrauntCards({
   areaName,
   aggregatedDiscountInfoV3,
 }) {
+  const hasDiscountInfo =
+    aggregatedDiscountInfoV3?.header && aggregatedDiscountInfoV3?.subHeader;
   return (
     <>
       <div className="card">
         <div className="banner">
           <img src={url + cloudinaryImageId} alt="" />
           <div className="offer-textbox">
-            <span className="offer">
-              {`${aggregatedDiscountInfoV3.header}  
-              ${aggregatedDiscountInfoV3.subHeader}`}
-            </span>
+            {hasDiscountInfo ? (
+              <span className="offer">
+                {`${aggregatedDiscountInfoV3?.header}  
+              ${aggregatedDiscountInfoV3?.subHeader}`}
+              </span>
+            ) : (
+              <span className="offer"></span>
+            )}
           </div>
         </div>
         <div className="info">
