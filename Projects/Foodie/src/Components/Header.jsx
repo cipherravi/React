@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Header.css";
 
 function Logo() {
@@ -13,6 +14,7 @@ function Logo() {
   );
 }
 function NavLinks() {
+  const [searchInput, setSearchInput] = useState("");
   return (
     <>
       <ul className="nav-list">
@@ -20,7 +22,14 @@ function NavLinks() {
           <span>
             <i className="fa-solid fa-magnifying-glass"></i>
           </span>
-          <input type="text" placeholder="Search" />
+          <input
+            className="search-box"
+            type="text"
+            placeholder="Search"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            // onSubmit={}
+          />
         </li>
         <li>
           <span>

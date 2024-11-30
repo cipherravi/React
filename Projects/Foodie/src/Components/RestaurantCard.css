@@ -5,6 +5,8 @@
   src: url(../assets/fonts/gilroy-bold/Gilroy-Medium.ttf);
   font-family: Gilroy-light;
   src: url(../assets/fonts/gilroy-bold/Gilroy-Light.ttf);
+  font-family: ProximaNova;
+  src: url(../assets/fonts/ProximaNova/proximanova_extrabold.otf);
 }
 
 .card {
@@ -18,6 +20,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 3px;
+  cursor: pointer;
+
   transition: transform 0.2s ease;
   &:hover {
     transform: scale(0.93);
@@ -25,21 +29,42 @@
 }
 .card .banner {
   width: 245px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
 }
 .card > .banner > img {
   width: 100%;
   height: 160px;
-  border-radius: 20px;
+
   object-fit: cover;
   object-position: center;
-  /* position: relative; */
 }
-/* .card .banner .offer {
+.card .banner .offer-textbox {
   position: absolute;
   left: 0;
   bottom: 0;
-  z-index: 10;
-} */
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%);
+}
+.card .banner .offer-textbox .offer {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  text-align: start;
+  padding: 0px 12px 8px 12px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: -0.5px;
+  word-spacing: -1px;
+  font-weight: 800;
+  white-space: nowrap;
+  text-transform: uppercase;
+  /* font-family: ProximaNova, arial, "Helvetica Neue", sans-serif; */
+  font-family: ProximaNova, arial, "Helvetica Neue", sans-serif;
+}
 .card .info {
   padding: 10px;
 }

@@ -1,5 +1,5 @@
 import "./RestaurantCard.css";
-import { data, url } from "./Constant";
+import { url } from "./Constant";
 
 function RestrauntCards({
   cloudinaryImageId,
@@ -8,13 +8,19 @@ function RestrauntCards({
   sla,
   cuisines,
   areaName,
+  aggregatedDiscountInfoV3,
 }) {
   return (
     <>
       <div className="card">
         <div className="banner">
           <img src={url + cloudinaryImageId} alt="" />
-          {/* <span className="offer">50% OFF UPTO ₹100</span> */}
+          <div className="offer-textbox">
+            <span className="offer">
+              {`${aggregatedDiscountInfoV3.header}  
+              ${aggregatedDiscountInfoV3.subHeader}`}
+            </span>
+          </div>
         </div>
         <div className="info">
           <div className="name">
