@@ -1,7 +1,6 @@
 import "./Header.css";
 import React from "react";
 import { useState } from "react";
-
 import { data } from "./Constant";
 
 function Logo() {
@@ -14,12 +13,17 @@ function Logo() {
   );
 }
 
-function NavLinks({ searchInput, onSearchInputChange }) {
-  // const [searchInput, setSearchInput] = useState("");
+function NavLinks() {
+  const [searchInput, setSearchInput] = useState("");
 
+  const filterData = (e) => {
+    if (e.key === "Enter") {
+      console.log("searched");
+    }
+  };
   const handleSearch = (e) => {
-    console.log("Search input changed to:", e.target.value); // Log the value of input
-    onSearchInputChange(e.target.value); // Call the parent function to update searchInput state
+    console.log("Search input changed to:", e.target.value);
+    setSearchInput(e.target.value);
   };
   return (
     <>
@@ -34,7 +38,7 @@ function NavLinks({ searchInput, onSearchInputChange }) {
             placeholder="Search"
             value={searchInput}
             onChange={handleSearch}
-            // onKeyDown={handleSearch}
+            onKeyDown={filterData}
           />
         </li>
         <li>
@@ -66,15 +70,11 @@ function NavLinks({ searchInput, onSearchInputChange }) {
   );
 }
 
-function Header({ searchInput, onSearchInputChange }) {
-  console.log("Header props:", { searchInput, onSearchInputChange });
+function Header() {
   return (
     <div className="header">
       <Logo />
-      <NavLinks
-        searchInput={searchInput}
-        onSearchInputChange={onSearchInputChange}
-      />
+      <NavLinks />
     </div>
   );
 }
