@@ -1,4 +1,5 @@
 import "./Header.css";
+import React from "react";
 import { useState } from "react";
 
 import { data } from "./Constant";
@@ -7,21 +8,18 @@ function Logo() {
   return (
     <div className="logo">
       <a href="/">
-        <img src="/public/foodie-logo.png" alt="logo" />
+        <img src="/foodie-logo.png" alt="logo" />
       </a>
     </div>
   );
 }
 
-function NavLinks() {
-  const [searchInput, setSearchInput] = useState("");
+function NavLinks({ searchInput, onSearchInputChange }) {
+  // const [searchInput, setSearchInput] = useState("");
 
   const handleSearch = (e) => {
-    if (e.key === "Enter") {
-      console.log("Enter clicked");
-      // const filteredData = filterData(searchInput, data);
-      // setRestaurantData(filteredData);
-    }
+    console.log("Search input changed to:", e.target.value); // Log the value of input
+    onSearchInputChange(e.target.value); // Call the parent function to update searchInput state
   };
   return (
     <>
@@ -35,8 +33,8 @@ function NavLinks() {
             type="text"
             placeholder="Search"
             value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={handleSearch}
+            onChange={handleSearch}
+            // onKeyDown={handleSearch}
           />
         </li>
         <li>
@@ -68,11 +66,15 @@ function NavLinks() {
   );
 }
 
-function Header() {
+function Header({ searchInput, onSearchInputChange }) {
+  console.log("Header props:", { searchInput, onSearchInputChange });
   return (
     <div className="header">
       <Logo />
-      <NavLinks />
+      <NavLinks
+        searchInput={searchInput}
+        onSearchInputChange={onSearchInputChange}
+      />
     </div>
   );
 }
