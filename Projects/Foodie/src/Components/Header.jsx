@@ -1,7 +1,5 @@
 import "./Header.css";
 import React from "react";
-import { useState } from "react";
-import { data } from "./Constant";
 
 function Logo() {
   return (
@@ -13,18 +11,7 @@ function Logo() {
   );
 }
 
-function NavLinks() {
-  const [searchInput, setSearchInput] = useState("");
-
-  const filterData = (e) => {
-    if (e.key === "Enter") {
-      console.log("searched");
-    }
-  };
-  const handleSearch = (e) => {
-    console.log("Search input changed to:", e.target.value);
-    setSearchInput(e.target.value);
-  };
+function NavLinks({ searchInput, handleSearch }) {
   return (
     <>
       <ul className="nav-list">
@@ -38,7 +25,6 @@ function NavLinks() {
             placeholder="Search"
             value={searchInput}
             onChange={handleSearch}
-            onKeyDown={filterData}
           />
         </li>
         <li>
@@ -70,11 +56,11 @@ function NavLinks() {
   );
 }
 
-function Header() {
+function Header({ searchInput, handleSearch }) {
   return (
     <div className="header">
       <Logo />
-      <NavLinks />
+      <NavLinks searchInput={searchInput} handleSearch={handleSearch} />
     </div>
   );
 }
