@@ -6,19 +6,19 @@ import { data } from "./Constant";
 //data[0].card.restaurants[i].info.name
 //restaurantData= data[0]?.card?.restaurants
 function Body() {
-  const prefix = data[0]?.card?.restaurants;
+  //   const prefix = data[0]?.card?.restaurants;
   //   const apiData =
   //     json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-  const [restaurantData, setRestaurantData] = useState(prefix);
+  const [allRestaurant, setAllRestaurant] = useState(undefined);
+  const [filteredRestaurant, setFilteredRestaurant] = useState(allRestaurant);
   const [searchInput, setSearchInput] = useState("");
-
   const handleSearch = (e) => {
     setSearchInput(e?.target?.value);
   };
 
   useEffect(() => {
-    const filteredData = restaurantData?.filter((restaurant) => {
+    const filteredData = allRestaurant?.filter((restaurant) => {
       const restaurantName = restaurant?.info?.name
         ?.toLowerCase()
         ?.replace(/\s+/g, "");
@@ -26,8 +26,8 @@ function Body() {
       return restaurantName?.includes(searchTerm);
     });
 
-    return setRestaurantData(filteredData);
-  }, [searchInput]);
+    return setFilteredRestaurant(filteredData);
+  }, [allRestaurant, searchInput]);
 
   useEffect(() => {
     getRestaurants();
@@ -46,7 +46,7 @@ function Body() {
       const apiData =
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-      setRestaurantData(apiData);
+      setAllRestaurant(apiData);
     } catch (error) {
       console.error("Error fetching restaurants:", error);
     }
@@ -55,7 +55,10 @@ function Body() {
   return (
     <>
       <Header searchInput={searchInput} handleSearch={handleSearch} />
-      <CardSection prefix={prefix} restaurantData={restaurantData} />
+      <CardSection
+        filteredRestaurant={filteredRestaurant}
+        allRestaurant={allRestaurant}
+      />
     </>
   );
 }

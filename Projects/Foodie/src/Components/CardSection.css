@@ -9,12 +9,28 @@
 
 .cards-section {
   width: 100%;
+  /* height: 100vh; */
   padding: 0px 100px 0px 170px;
   /* margin-left: 170px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
+  position: relative;
+}
+.cards-section > p {
+  position: absolute;
+  top: calc(50vh - 200px);
+  left: 38%;
+
+  font-size: 20px;
+  font-family: ProximaNova-regular, "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+}
+.cards-section .shimmer-loader img {
+  position: absolute;
+  left: 0;
+  top: -15vh;
 }
 .heading {
   margin: 15px 0px 15px 180px;
