@@ -1,14 +1,13 @@
 @font-face {
   font-family: Gilroy-bold;
-  src: url(../src/assets/fonts/gilroy-bold/Gilroy-Bold.ttf);
+  src: url(../assets/fonts/gilroy-bold/Gilroy-Bold.ttf);
   font-family: Gilroy-medium;
-  /* src: url(../assets/fonts/gilroy-bold/Gilroy-Medium.ttf); */
-  src: url(../src/assets/fonts/gilroy-bold/Gilroy-Medium.ttf);
+  src: url(../assets/fonts/gilroy-bold/Gilroy-Medium.ttf);
 
   font-family: Gilroy-light;
-  src: url(../src/assets/fonts/gilroy-bold/Gilroy-Light.ttf);
+  src: url(../assets/fonts/gilroy-bold/Gilroy-Light.ttf);
   font-family: ProximaNova;
-  src: url(../src/assets/fonts/ProximaNova/proximanova_extrabold.otf);
+  src: url(../assets/fonts/ProximaNova/proximanova_extrabold.otf);
 }
 
 .card {
@@ -67,7 +66,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: uppercase;
-  /* font-family: ProximaNova, arial, "Helvetica Neue", sans-serif; */
   font-family: ProximaNova, arial, "Helvetica Neue", sans-serif;
 }
 .card .info {
