@@ -1,6 +1,5 @@
 import "./Header.css";
-import React from "react";
-
+import { useNavigate } from "react-router-dom";
 function Logo() {
   return (
     <div className="logo">
@@ -12,6 +11,19 @@ function Logo() {
 }
 
 function NavLinks({ searchInput, handleSearch }) {
+  const navigate = useNavigate();
+  const handleOffers = () => {
+    navigate("/offers");
+  };
+  const handleHelp = () => {
+    navigate("/help");
+  };
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  const handleCart = () => {
+    navigate("/cart");
+  };
   return (
     <>
       <ul className="nav-list">
@@ -27,25 +39,25 @@ function NavLinks({ searchInput, handleSearch }) {
             onChange={handleSearch}
           />
         </li>
-        <li>
+        <li onClick={handleOffers}>
           <span>
             <i className="fa-solid fa-tags"></i>
           </span>
           Offers
         </li>
-        <li>
+        <li onClick={handleHelp}>
           <span>
             <i className="fa-solid fa-circle-h"></i>
           </span>
           Help
         </li>
-        <li>
+        <li onClick={handleLogin}>
           <span>
             <i className="fa-regular fa-user"></i>
           </span>
           Sign In
         </li>
-        <li>
+        <li onClick={handleCart}>
           <span>
             <i className="fa-solid fa-cart-shopping"></i>
           </span>
