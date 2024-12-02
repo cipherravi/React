@@ -2,17 +2,12 @@ import "./Body.css";
 import Header from "./Header";
 import CardSection from "./CardSection";
 import { useState, useEffect } from "react";
-import { data } from "./Constant";
-//data[0].card.restaurants[i].info.name
-//restaurantData= data[0]?.card?.restaurants
-function Body() {
-  //   const prefix = data[0]?.card?.restaurants;
-  //   const apiData =
-  //     json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
+function Body() {
   const [allRestaurant, setAllRestaurant] = useState(undefined);
   const [filteredRestaurant, setFilteredRestaurant] = useState(allRestaurant);
   const [searchInput, setSearchInput] = useState("");
+
   const handleSearch = (e) => {
     setSearchInput(e?.target?.value);
   };
@@ -42,11 +37,11 @@ function Body() {
         throw new Error("Failed to fetch data");
       }
       const json = await fetchedData.json();
-      console.log(json);
-      const apiData =
+
+      const apiDataPath =
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-      setAllRestaurant(apiData);
+      setAllRestaurant(apiDataPath);
     } catch (error) {
       console.error("Error fetching restaurants:", error);
     }

@@ -1,12 +1,14 @@
 @font-face {
   font-family: Gilroy-bold;
-  src: url(../assets/fonts/gilroy-bold/Gilroy-Bold.ttf);
+  src: url(../src/assets/fonts/gilroy-bold/Gilroy-Bold.ttf);
   font-family: Gilroy-medium;
-  src: url(../assets/fonts/gilroy-bold/Gilroy-Medium.ttf);
+  /* src: url(../assets/fonts/gilroy-bold/Gilroy-Medium.ttf); */
+  src: url(../src/assets/fonts/gilroy-bold/Gilroy-Medium.ttf);
+
   font-family: Gilroy-light;
-  src: url(../assets/fonts/gilroy-bold/Gilroy-Light.ttf);
+  src: url(../src/assets/fonts/gilroy-bold/Gilroy-Light.ttf);
   font-family: ProximaNova;
-  src: url(../assets/fonts/ProximaNova/proximanova_extrabold.otf);
+  src: url(../src/assets/fonts/ProximaNova/proximanova_extrabold.otf);
 }
 
 .card {
