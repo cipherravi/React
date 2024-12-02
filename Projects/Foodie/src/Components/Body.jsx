@@ -17,11 +17,13 @@ function Body() {
 
   useEffect(() => {
     const filteredData = prefix?.filter((restaurant) => {
-      return restaurant?.info?.name
+      const restaurantName = restaurant?.info?.name
         ?.toLowerCase()
-        ?.includes(searchInput?.toLowerCase());
+        ?.replace(/\s+/g, "");
+      const searchTerm = searchInput?.toLowerCase()?.replace(/\s+/g, "");
+      return restaurantName?.includes(searchTerm);
     });
-    setRestaurantData(filteredData);
+    return setRestaurantData(filteredData);
   }, [searchInput]);
 
   return (
