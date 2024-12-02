@@ -27,10 +27,12 @@
   font-family: ProximaNova-regular, "Segoe UI", Tahoma, Geneva, Verdana,
     sans-serif;
 }
-.cards-section .shimmer-loader img {
-  position: absolute;
-  left: 0;
-  top: -15vh;
+.cards-section .shimmer-loader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .heading {
   margin: 15px 0px 15px 180px;

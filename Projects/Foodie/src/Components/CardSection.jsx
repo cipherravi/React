@@ -1,5 +1,6 @@
 import "./CardSection.css";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 function CardSection({ allRestaurant, filteredRestaurant }) {
   return (
@@ -11,7 +12,11 @@ function CardSection({ allRestaurant, filteredRestaurant }) {
       <div className="cards-section">
         {allRestaurant == undefined ? (
           <div className="shimmer-loader">
-            <img src="/Shimmer.png" alt="Loading..." />
+            {Array(8)
+              .fill("")
+              .map((_, index) => {
+                return <Shimmer key={index} />;
+              })}
           </div>
         ) : filteredRestaurant?.length > 0 ? (
           filteredRestaurant?.map((restaurant) => (

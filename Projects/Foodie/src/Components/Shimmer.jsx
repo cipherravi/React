@@ -1,6 +1,20 @@
 import "./Shimmer.css";
 
 function Shimmer() {
-  return <h1>Write Shimmer code here...</h1>;
+  return (
+    <>
+      <div className="Scard">
+        <div className="Sbanner">
+          <div className="Simg"></div>
+        </div>
+        <div className="Sinfo">
+          <div className="Sname"></div>
+          <div className="Srating-duration"></div>
+          <div className="Scuisine"></div>
+          <div className="Slocation"></div>
+        </div>
+      </div>
+    </>
+  );
 }
 export default Shimmer;
