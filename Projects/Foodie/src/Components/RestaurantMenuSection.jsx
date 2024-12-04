@@ -1,30 +1,37 @@
 import { useEffect, useState } from "react";
 import RestaurantMenuCard from "./RestaurantMenuCard";
+import { useParams } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 function RestaurantMenuSection() {
-  const [restaurant, setRestaurant] = useState("");
-  //constant url=https://media-assets.swiggy.com/swiggy/image/upload/
-  // ImageId =FOOD_CATALOG/IMAGES/CMS/2024/8/3/d9d8bcd5-7f62-4f1b-8a12-30f41cd4088e_7b0bb350-b4e5-42c7-b504-4089e0d8f276.jpg
+  const { id } = useParams();
+
+  const [restaurantCardData, setRestaurantCardData] = useState("");
+  //   console.log(id);
 
   // path : json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[i]
   //card : path.card.card.itemCards[i].card.info.
+
   useEffect(() => {
     getRestaurantMenu();
   }, []);
   async function getRestaurantMenu() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=977437&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    // console.log(json);
-    setRestaurant(
-      json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .itemCards
-    );
-    // console.log(
-    //   json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-    //     .itemCards[0].card.info
-    // );
+    try {
+      const data = await fetch(
+        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=977437&catalog_qa=undefined&submitAction=ENTER"
+      );
+      if (data.ok) {
+        const json = await data.json();
+        setRestaurantCardData(
+          json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+        );
+        console.log(json);
+      }
+    } catch {}
+
+    // `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
+
+    console.log(restaurantCardData);
   }
   // useEffect(() => {
   //   // if(restaurant)
@@ -32,16 +39,22 @@ function RestaurantMenuSection() {
   //     item?.card?.info;
   //   });
   // }, []);
-  console.log(restaurant);
-  return (
+
+  return !restaurantCardData || restaurantCardData.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="menu-section">
       <div className="menu-heading">Fresh Kettle Popcorns (5)</div>
-      <RestaurantMenuCard />
-      <RestaurantMenuCard />
-      <RestaurantMenuCard />
-      <RestaurantMenuCard />
-      <RestaurantMenuCard />
-      <RestaurantMenuCard />
+      {restaurantCardData?.map((item, index) => {
+        const itemCards = item?.card?.card?.itemCards;
+        console.log(itemCards); // Log the itemCards to check structure
+        return itemCards?.map((itemCard, index) => (
+          <RestaurantMenuCard
+            key={itemCard?.card?.info?.id || index} // Use `index` as fallback if `id` is undefined
+            {...itemCard?.card?.info} // Ensure `info` exists
+          />
+        ));
+      })}
     </div>
   );
 }

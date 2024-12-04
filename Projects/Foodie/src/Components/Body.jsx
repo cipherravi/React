@@ -43,10 +43,6 @@ function Body() {
     return setFilteredRestaurant(filteredData);
   }, [allRestaurant, searchInput]);
 
-  //   useEffect(() => {
-  //     getRestaurants();
-  //   }, []);
-
   async function getRestaurants() {
     try {
       const fetchedData = await fetch(
