@@ -9,13 +9,19 @@
   gap: 20px;
   padding: 100px;
 }
+.error-container .error {
+  color: red;
+}
 .error-container img {
   width: 20vw;
   border-radius: 10px;
 }
 .error-container .error-msg {
-  color: red;
+  color: rgba(255, 255, 0, 0.723);
 }
 .error-container .suggestion {
   color: green;
+}
+.suggestion span {
+  color: black;
 }

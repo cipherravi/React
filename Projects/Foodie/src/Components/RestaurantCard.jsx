@@ -1,7 +1,9 @@
 import "./RestaurantCard.css";
 import { url } from "./Constant";
+import { useNavigate } from "react-router-dom";
 
 function RestrauntCards({
+  id,
   cloudinaryImageId,
   name,
   avgRating,
@@ -12,9 +14,16 @@ function RestrauntCards({
 }) {
   const hasDiscountInfo =
     aggregatedDiscountInfoV3?.header && aggregatedDiscountInfoV3?.subHeader;
+
+  const navigate = useNavigate();
+  const handleMenu = () => {
+    const joinedName = name.split(" ").join("-");
+    const url = `/restaurant/${joinedName}/${id}/menu`;
+    navigate(url);
+  };
   return (
     <>
-      <div className="card">
+      <div className="card" onClick={handleMenu}>
         <div className="banner">
           <img src={url + cloudinaryImageId} alt="" />
           <div className="offer-textbox">
