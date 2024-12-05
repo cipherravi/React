@@ -2,12 +2,14 @@ import Header from "../Components/Header";
 
 function Help() {
   return (
-    <div>
+    <>
       <Header />
       <div className="empty"></div>
-
-      <h1>Help 🥺</h1>
-    </div>
+      <div className="offer-wrapper">
+        <h1>Help</h1>
+        <h2>What can i help you, here i need help 🥲</h2>
+      </div>
+    </>
   );
 }
 

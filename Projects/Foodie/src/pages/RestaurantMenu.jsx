@@ -1,54 +1,54 @@
 import "./RestaurantMenu.css";
-import Header from "../Components/Header";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import RestaurantMenuCard from "../Components/RestaurantMenuCard";
+import Header from "../Components/Header";
 import RestaurantMenuSection from "../Components/RestaurantMenuSection";
-function RestaurantMenu() {
-  const param = useParams();
+import RestaurantMenuHeader from "../Components/RestaurantMenuHeader";
+import Shimmer from "../Components/Shimmer";
+import ShimmerMenu from "../Components/ShimmerMenu";
 
-  return (
+function RestaurantMenu() {
+  const [dataForHeader, setDataForHeader] = useState([]);
+  const [dataForMenu, setDataForMenu] = useState([]);
+  const { id } = useParams();
+  // console.log(allRestaurant);
+
+  useEffect(() => {
+    getRestaurants();
+  }, []);
+  async function getRestaurants() {
+    try {
+      const fetchedData = await fetch(
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
+      );
+
+      // Check if fetch was successful
+      if (fetchedData.ok) {
+        const json = await fetchedData.json();
+
+        const apiDataForHeader = json?.data?.cards[2]?.card?.card?.info;
+        const apiDataForMenu =
+          json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+        // Store data in state
+        setDataForHeader(apiDataForHeader);
+        setDataForMenu(apiDataForMenu);
+      } else {
+        throw new Error("Failed to Fetch Restaurant Header Data");
+      }
+    } catch (error) {
+      console.error("Error fetching Restaurant Header Data:", error);
+    }
+  }
+
+  return dataForHeader.length == 0 ? (
+    <ShimmerMenu />
+  ) : (
     <>
       <Header />
       <div className="empty"></div>
       <div className="container">
         <div className="box">
-          <h1 className="restaurant-title">PVR Cafe </h1>
-          <div className="gradient">
-            <div className="restaurant-info">
-              <div className="rating-price">
-                <span>
-                  <i className="fa-regular fa-star"></i>
-                </span>
-                <span className="rating">
-                  5.0 (2 ratings) <span className="dot">•</span>
-                </span>
-                <span className="price-for-two">
-                  <span className="rupees">₹</span>200 for two
-                </span>
-              </div>
-
-              <div className="cuisine">
-                <span>Snacks, Fast Food</span>
-              </div>
-              <div className="graphic-type-location">
-                <div className="graphic">
-                  <div className="circle"></div>
-                  <div className="line"></div>
-                  <div className="circle"></div>
-                </div>
-                <div className="info">
-                  <div className="type-location">
-                    <span className="restaurant-type">Outlet</span>
-                    <span className="location">Budh marg</span>
-                  </div>
-                  <div className="duration">
-                    <span>30-35 mins</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          <RestaurantMenuHeader dataForHeader={dataForHeader} />
           <div className="menu">
             <span>-Menu-</span>
           </div>
@@ -59,7 +59,7 @@ function RestaurantMenu() {
             </div>
           </div>
           <div className="horizontal-rule"></div>
-          <RestaurantMenuSection />
+          <RestaurantMenuSection dataForMenu={dataForMenu} />
         </div>
       </div>
     </>

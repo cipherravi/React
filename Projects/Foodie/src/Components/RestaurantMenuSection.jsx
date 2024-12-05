@@ -1,61 +1,70 @@
+import "./RestaurantMenuSection.css";
 import { useEffect, useState } from "react";
 import RestaurantMenuCard from "./RestaurantMenuCard";
 import { useParams } from "react-router-dom";
-import Shimmer from "./Shimmer";
 
-function RestaurantMenuSection() {
+function RestaurantMenuSection({ dataForMenu }) {
+  console.log("menu", dataForMenu);
   const { id } = useParams();
 
-  const [restaurantCardData, setRestaurantCardData] = useState("");
-  //   console.log(id);
+  const [restaurantMenuData, setRestaurantMenuData] = useState("");
 
   // path : json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[i]
   //card : path.card.card.itemCards[i].card.info.
 
   useEffect(() => {
-    getRestaurantMenu();
+    setRestaurantMenuData(dataForMenu);
   }, []);
-  async function getRestaurantMenu() {
-    try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=977437&catalog_qa=undefined&submitAction=ENTER"
-      );
-      if (data.ok) {
-        const json = await data.json();
-        setRestaurantCardData(
-          json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-        );
-        console.log(json);
-      }
-    } catch {}
 
-    // `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59080&lng=85.13480&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
+  // State to manage the height of the div
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-    console.log(restaurantCardData);
-  }
-  // useEffect(() => {
-  //   // if(restaurant)
-  //   restaurant?.map((item) => {
-  //     item?.card?.info;
-  //   });
-  // }, []);
+  // State to track whether the arrow is rotated
+  const [isRotated, setIsRotated] = useState(false);
 
-  return !restaurantCardData || restaurantCardData.length === 0 ? (
-    <Shimmer />
-  ) : (
-    <div className="menu-section">
-      <div className="menu-heading">Fresh Kettle Popcorns (5)</div>
-      {restaurantCardData?.map((item, index) => {
-        const itemCards = item?.card?.card?.itemCards;
-        console.log(itemCards); // Log the itemCards to check structure
-        return itemCards?.map((itemCard, index) => (
-          <RestaurantMenuCard
-            key={itemCard?.card?.info?.id || index} // Use `index` as fallback if `id` is undefined
-            {...itemCard?.card?.info} // Ensure `info` exists
-          />
-        ));
-      })}
-    </div>
+  // Function to toggle the height when clicked
+  // Toggle the rotation state on click
+  const handleClick = () => {
+    setIsRotated(!isRotated);
+    setIsCollapsed(!isCollapsed); // Toggle state between true/false
+  };
+
+  return !restaurantMenuData || restaurantMenuData.length === 0 ? null : (
+    <>
+      <div className="menu-heading">
+        <span>Choose Your Favourite </span>{" "}
+        <span
+          className="dropdown"
+          onClick={handleClick}
+          style={{
+            display: "inline-block", // Necessary for applying transform
+            transition: "transform 0.2s ease", // Smooth rotation transition
+            transform: isRotated ? "rotate(90deg)" : "rotate(-90deg)", // Rotate by 180 degrees when clicked
+          }}
+        >
+          {">"}
+        </span>
+      </div>
+      <div
+        className="menu-section"
+        style={{
+          height: isCollapsed ? "0" : "", // Set height to 0 or 200px based on the state
+          overflow: "hidden", // Hide content when the height is 0
+          transition: "height 0.3s ease", // Smooth transition effect for height change
+        }}
+      >
+        {restaurantMenuData?.map((item, index) => {
+          const itemCards = item?.card?.card?.itemCards;
+          // console.log(itemCards); // Log the itemCards to check structure
+          return itemCards?.map((itemCard, index) => (
+            <RestaurantMenuCard
+              key={itemCard?.card?.info?.id || index} // Use `index` as fallback if `id` is undefined
+              {...itemCard?.card?.info} // Ensure `info` exists
+            />
+          ));
+        })}
+      </div>
+    </>
   );
 }
 export default RestaurantMenuSection;

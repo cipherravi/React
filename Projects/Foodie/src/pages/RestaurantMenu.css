@@ -1,13 +1,13 @@
 .container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  /* border: 1px solid black; */
 }
 .box {
   width: 55vw;
   margin-top: 20px;
-  /* border: 1px solid black; */
   padding-top: 60px;
 }
 
@@ -62,9 +62,6 @@
 .restaurant-info .dot {
   color: #8c8f91;
   font-size: 12px;
-}
-.restaurant-info .rupees {
-  font-weight: 500;
 }
 
 .restaurant-info .cuisine {
@@ -159,6 +156,7 @@
 
 .menu-section {
   margin-top: 40px;
+  width: 100%;
 }
 .horizontal-rule {
   height: 0.5px;
@@ -166,10 +164,8 @@
   width: calc(100% - 32px);
   margin: 40px auto;
 }
-.menu-section {
-  width: 100%;
-}
-.menu-section .menu-heading {
+
+.menu-heading {
   font-family: Gilroy-bold;
   color: #151920;
   font-size: 18px;
@@ -182,8 +178,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  /* border: 1px solid black; */
-  overflow: hidden;
 }
 
 .item-card .item-info {

@@ -78,7 +78,7 @@ function Body() {
     // Set up an interval to refresh data every 60 seconds (1 minute)
     const intervalId = setInterval(() => {
       getRestaurants();
-    }, 60000);
+    }, 30000);
     // Cleanup interval on component unmount
     return () => {
       clearInterval(intervalId);
