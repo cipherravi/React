@@ -4,18 +4,17 @@ import { useParams } from "react-router-dom";
 import Header from "../Components/Header";
 import RestaurantMenuSection from "../Components/RestaurantMenuSection";
 import RestaurantMenuHeader from "../Components/RestaurantMenuHeader";
-import Shimmer from "../Components/Shimmer";
 import ShimmerMenu from "../Components/ShimmerMenu";
 
 function RestaurantMenu() {
   const [dataForHeader, setDataForHeader] = useState([]);
   const [dataForMenu, setDataForMenu] = useState([]);
   const { id } = useParams();
-  // console.log(allRestaurant);
+  const [savedApiDataForMenu, setSavedApiDataForMenu] = useState("");
+  const [savedApiDataForHeader, setSavedApiDataForHeader] = useState("");
+  const [flag, setFlag] = useState(false);
+  flag == true ? sessionStorage.clear() : null;
 
-  useEffect(() => {
-    getRestaurants();
-  }, []);
   async function getRestaurants() {
     try {
       const fetchedData = await fetch(
@@ -32,13 +31,35 @@ function RestaurantMenu() {
         // Store data in state
         setDataForHeader(apiDataForHeader);
         setDataForMenu(apiDataForMenu);
+        sessionStorage.setItem(
+          "apiDataForHeader",
+          JSON.stringify(apiDataForHeader)
+        ); // Stringify before saving
+        sessionStorage.setItem(
+          "apiDataForMenu",
+          JSON.stringify(apiDataForMenu)
+        ); // Stringify before saving
       } else {
-        throw new Error("Failed to Fetch Restaurant Header Data");
+        throw new Error("Failed to Fetch Restaurant Menu Data");
+        t;
       }
     } catch (error) {
-      console.error("Error fetching Restaurant Header Data:", error);
+      console.error("Error fetching Restaurant Menu Data:", error);
     }
   }
+  // Check if the restaurants are already saved in localStorage, if so, retrieve from there
+  useEffect(() => {
+    // savedApiDataForHeader = sessionStorage.getItem("apiDataForHeader");
+    setSavedApiDataForHeader(sessionStorage.getItem("apiDataForHeader"));
+    setSavedApiDataForMenu(sessionStorage.getItem("apiDataForMenu"));
+    if (savedApiDataForMenu && savedApiDataForHeader) {
+      setDataForHeader(JSON.parse(savedApiDataForHeader)); // Parse the JSON string back into an array
+      setDataForMenu(JSON.parse(savedApiDataForMenu)); // Parse the JSON string back into an array
+      setFlag(true);
+    } else {
+      getRestaurants(); // Fetch data if not found in localStorage
+    }
+  }, [flag]); // Empty dependency array ensures this effect runs only once (on mount)
 
   return dataForHeader.length == 0 ? (
     <ShimmerMenu />
