@@ -1,13 +1,9 @@
 import "./css/Cart.css";
-// import "../index.css";
-import Header from "../Components/Header";
-
+import ShimmerMenu from "../Components/ShimmerMenu";
 function Cart() {
   return (
     <>
-      <Header />
-      <div className="empty"></div>
-
+      <ShimmerMenu></ShimmerMenu>
       <div className="cart-wrapper ">
         <h1>Cart 🛒</h1>
         <h2>Nothing in your Cart 🙁</h2>

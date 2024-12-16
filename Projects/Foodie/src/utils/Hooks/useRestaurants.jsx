@@ -1,7 +1,7 @@
 import { RESTAURANTS_URL } from "../../Components/Constant";
 
-const useRestaurants = (setAllRestaurant) => {
-  async function getRestaurants() {
+const useRestaurants = () => {
+  async function getRestaurants(setAllRestaurant) {
     try {
       const fetchedData = await fetch(RESTAURANTS_URL);
 

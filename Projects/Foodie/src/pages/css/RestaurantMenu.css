@@ -2,18 +2,13 @@ body {
   overflow-x: hidden;
 }
 .container {
-  width: 1425px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-left: 6vw;
-  /* border: 1px solid black; */
 }
 .box {
   width: 50vw;
   margin-top: 20px;
-  /* margin: 20px 20%; */
   padding-top: 60px;
 }
 

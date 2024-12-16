@@ -8,7 +8,7 @@ import Help from "./pages/Help.jsx";
 import Login from "./pages/Login.jsx";
 import Cart from "./pages/Cart.jsx";
 import RestaurantMenu from "./pages/RestaurantMenu.jsx";
-import Body from "./Components/Body.jsx";
+import CardSection from "./Components/CardSection.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <CardSection />,
       },
       {
         path: "/offers",

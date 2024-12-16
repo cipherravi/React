@@ -1,11 +1,16 @@
 import "./css/CardSection.css";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { RestaurantSearchFilter } from "../utils/Context/RestaurantSearchFilterProvider";
+import { useContext } from "react";
 
-function CardSection({ allRestaurant, filteredRestaurant }) {
+function CardSection() {
+  const { allRestaurant, filteredRestaurant } = useContext(
+    RestaurantSearchFilter
+  );
+
   return (
-    <>
-      <div className="empty"></div>
+    <div className="pt-20">
       <h1 className="heading">
         Restaurants with online food delivery in Patna
       </h1>
@@ -31,7 +36,7 @@ function CardSection({ allRestaurant, filteredRestaurant }) {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

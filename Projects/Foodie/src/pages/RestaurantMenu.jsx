@@ -1,6 +1,6 @@
 import "./css/RestaurantMenu.css";
 import { useEffect, useState } from "react";
-import Header from "../Components/Header";
+
 import RestaurantMenuSection from "../Components/RestaurantMenuSection";
 import RestaurantMenuHeader from "../Components/RestaurantMenuHeader";
 import ShimmerMenu from "../Components/ShimmerMenu";
@@ -26,12 +26,10 @@ function RestaurantMenu() {
       return <Shimmer key={index} />;
     });
   return dataForHeader.length == 0 ? (
-    <div className="flex flex-wrap gap-4 pt-8 mx-20 pl-20">{shimmer}</div>
+    <div className="flex flex-wrap gap-4 pt-28 mx-20 pl-20">{shimmer}</div>
   ) : (
     <>
-      <Header />
-      <div className="empty"></div>
-      <div className="container">
+      <div className="container pt-4 min-w-full flex justify-center items-start">
         <div className="box">
           <RestaurantMenuHeader dataForHeader={dataForHeader} />
           <div className="menu">

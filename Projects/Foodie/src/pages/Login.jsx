@@ -1,10 +1,8 @@
 import "./css/Login.css";
-import Header from "../Components/Header";
+
 function Login() {
   return (
     <div>
-      <Header />
-      <div className="empty"></div>
       <div className="wrapper">
         <div className="box">
           <h1 className="form-heading">Login</h1>
@@ -13,7 +11,7 @@ function Login() {
             placeholder="Phone Number"
             required
             min="10"
-            maxlength="10"
+            maxLength="10"
             className="number-input"
           />
           <button type="submit" className="submit">

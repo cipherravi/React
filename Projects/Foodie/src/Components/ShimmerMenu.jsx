@@ -1,17 +1,11 @@
 function ShimmerMenu() {
   return (
-    <div className="ShimmerMenuWrapper">
-      <div className="SMheading"> </div>
+    <div className="ShimmerMenuWrapper min-w-full min-h-full flex pt-28 justify-center">
+      <div className="SMheading bg-red-400 w-10 h-3"> </div>
       <div className="SMbanner">
         <span className="SMrating"></span>
         <span className="SM"></span>
       </div>
-      {/* <div className="Sinfo">
-          <div className="Sname"></div>
-          <div className="Srating-duration"></div>
-          <div className="Scuisine"></div>
-          <div className="Slocation"></div>
-        </div> */}
     </div>
   );
 }

@@ -1,30 +1,21 @@
 import "./css/Header.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { RestaurantSearchFilter } from "../utils/Context/RestaurantSearchFilterProvider";
+import { useContext } from "react";
 
 function Logo() {
   return (
     <div className="logo">
-      <a href="/">
+      <Link to="/">
         <img src="/foodie-logo.png" alt="logo" />
-      </a>
+      </Link>
     </div>
   );
 }
 
-function NavLinks({ searchInput, handleSearch }) {
-  const navigate = useNavigate();
-  const handleOffers = () => {
-    navigate("/offers");
-  };
-  const handleHelp = () => {
-    navigate("/help");
-  };
-  const handleLogin = () => {
-    navigate("/login");
-  };
-  const handleCart = () => {
-    navigate("/cart");
-  };
+function NavLinks() {
+  const { searchInput, handleSearch } = useContext(RestaurantSearchFilter);
+
   return (
     <>
       <ul className="nav-list">
@@ -40,40 +31,52 @@ function NavLinks({ searchInput, handleSearch }) {
             onChange={handleSearch}
           />
         </li>
-        <li onClick={handleOffers}>
-          <span>
-            <i className="fa-solid fa-tags"></i>
-          </span>
-          Offers
-        </li>
-        <li onClick={handleHelp}>
-          <span>
-            <i className="fa-solid fa-circle-h"></i>
-          </span>
-          Help
-        </li>
-        <li onClick={handleLogin}>
-          <span>
-            <i className="fa-regular fa-user"></i>
-          </span>
-          Sign In
-        </li>
-        <li onClick={handleCart}>
-          <span>
-            <i className="fa-solid fa-cart-shopping"></i>
-          </span>
-          Cart
-        </li>
+
+        <Link to="/offers">
+          <li>
+            <span>
+              <i className="fa-solid fa-tags"></i>
+            </span>
+            Offers
+          </li>
+        </Link>
+
+        <Link to="/help">
+          <li>
+            <span>
+              <i className="fa-solid fa-circle-h"></i>
+            </span>
+            Help
+          </li>
+        </Link>
+
+        <Link to="/login">
+          <li>
+            <span>
+              <i className="fa-regular fa-user"></i>
+            </span>
+            Sign In
+          </li>
+        </Link>
+
+        <Link to="/cart">
+          <li>
+            <span>
+              <i className="fa-solid fa-cart-shopping"></i>
+            </span>
+            Cart
+          </li>
+        </Link>
       </ul>
     </>
   );
 }
 
-function Header({ searchInput, handleSearch }) {
+function Header() {
   return (
-    <div className="header">
+    <div className=" header">
       <Logo />
-      <NavLinks searchInput={searchInput} handleSearch={handleSearch} />
+      <NavLinks />
     </div>
   );
 }
