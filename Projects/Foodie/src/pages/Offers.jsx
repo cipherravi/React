@@ -1,4 +1,4 @@
-import "./Offers.css";
+import "./css/Offers.css";
 import Header from "../Components/Header";
 function Offers() {
   return (

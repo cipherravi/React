@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "./css/Footer.css";
 
 function Footer() {
   return (
@@ -15,7 +15,7 @@ function Footer() {
           <a href="/">Team</a>
         </div>
         <div className="contact-us">
-          <span>Contact us</span>
+          <span className="text-red-900">Contact us</span>
           <a href="/">Help & Support</a>
           <a href="/">Partner with us</a>
           <a href="/">Ride With us</a>

@@ -1,7 +1,7 @@
-import { createRoot } from "react-dom/client";
 import "./index.css";
+import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Error from "./pages/Error.jsx";
 import Offers from "./pages/Offers.jsx";
 import Help from "./pages/Help.jsx";

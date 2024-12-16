@@ -1,4 +1,4 @@
-import "./RestaurantMenuSection.css";
+import "./css/RestaurantMenuSection.css";
 import { useEffect, useState } from "react";
 import RestaurantMenuCard from "./RestaurantMenuCard";
 import { useParams } from "react-router-dom";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { url } from "./Constant";
-import "./RestaurantMenuCard.css";
+import "./css/RestaurantMenuCard.css";
 function RestaurantMenuCard({
   id,
   category,

@@ -1,4 +1,4 @@
-import "./CardSection.css";
+import "./css/CardSection.css";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 

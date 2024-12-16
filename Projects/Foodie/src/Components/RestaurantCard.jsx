@@ -1,4 +1,4 @@
-import "./RestaurantCard.css";
+import "./css/RestaurantCard.css";
 import { url } from "./Constant";
 import { useNavigate } from "react-router-dom";
 

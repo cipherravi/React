@@ -1,4 +1,5 @@
 import Header from "../Components/Header";
+import "./css/Help.css";
 
 function Help() {
   return (

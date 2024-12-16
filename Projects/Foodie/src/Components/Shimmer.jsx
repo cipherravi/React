@@ -1,4 +1,4 @@
-import "./Shimmer.css";
+import "./css/Shimmer.css";
 
 function Shimmer() {
   return (
