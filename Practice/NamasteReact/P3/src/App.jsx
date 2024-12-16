@@ -1,5 +1,6 @@
 import "./App.css";
-
+// import FetchApi from "./Components/FetchApi";
+import FetchApi from "./Components/fetchApi";
 function App() {
   function Header() {
     return (
@@ -24,20 +25,20 @@ function App() {
         </h1>
         <ul className="nav-items">
           <li className="search">
-            <i class="ri-search-line"> </i> Search
+            <i className="ri-search-line"> </i> Search
           </li>
           <li className="offers">
-            <i class="fa fa-percent" aria-hidden="true"></i>
+            <i className="fa fa-percent" aria-hidden="true"></i>
             Offers
           </li>
           <li className="help">
-            <i class="ri-hand-heart-line"></i>Help
+            <i className="ri-hand-heart-line"></i>Help
           </li>
           <li className="sign-in">
-            <i class="ri-user-fill"></i>Sign In
+            <i className="ri-user-fill"></i>Sign In
           </li>
           <li className="cart">
-            <i class="ri-shopping-cart-2-line"></i>Cart
+            <i className="ri-shopping-cart-2-line"></i>Cart
           </li>
         </ul>
       </div>
@@ -57,6 +58,7 @@ function App() {
     <div>
       <Header />
       <Hero />
+      <FetchApi />
     </div>
   );
 }
