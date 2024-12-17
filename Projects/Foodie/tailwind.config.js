@@ -6,8 +6,11 @@ export default {
     // "./src/pages/**/*.{js,jsx,ts,tsx}", // Match all files in pages folder
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        menuShimmer: "#181A29",
+      },
+    },
   },
   plugins: [],
 };
-// Projects/Foodie/src/pages/Error.jsx
