@@ -12,12 +12,16 @@ const RestaurantMenuCategory = ({ dataForMenu }) => {
 
   return dataForMenu.map((item, index) => {
     const itemCards = item?.card?.card.itemCards;
+
     const title = item?.card?.card?.title;
 
     return title == undefined || title == "Top Picks" ? null : (
       <div key={index}>
         <div className="menu-heading">
-          <span>{title} </span>
+          <span>
+            {title}
+            {itemCards != undefined ? `(${itemCards.length})` : null}
+          </span>
           <span
             className="dropdown "
             onClick={() => handleClick(index)}
