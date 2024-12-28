@@ -15,9 +15,6 @@ function RestaurantMenuSection({ dataForMenu }) {
 
   return !restaurantMenuData || restaurantMenuData.length === 0 ? null : (
     <>
-      {/* {dataForMenu.map((item, index) => {
-        <RestaurantMenuCategory key={index} dataForMenu={item} />;
-      })} */}
       <RestaurantMenuCategory dataForMenu={dataForMenu} />
     </>
   );

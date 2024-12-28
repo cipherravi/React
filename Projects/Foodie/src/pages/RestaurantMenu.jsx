@@ -9,6 +9,8 @@ import RestaurantMenuSection from "../Components/RestaurantMenuSection";
 function RestaurantMenu() {
   const [dataForHeader, setDataForHeader] = useState([]);
   const [dataForMenu, setDataForMenu] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
   const { getRestaurantsMenu } = useResturantsMenu(
     setDataForHeader,
     setDataForMenu
@@ -29,7 +31,12 @@ function RestaurantMenu() {
             <span>-Menu-</span>
           </div>
           <div className="search-bar">
-            <input type="text" placeholder="Search for dishes" />
+            <input
+              type="text"
+              placeholder={"Search for dishes"}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
             <div className="search-icon">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>

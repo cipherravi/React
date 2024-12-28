@@ -16,58 +16,51 @@ const RestaurantMenuCategory = ({ dataForMenu }) => {
     const title = item?.card?.card?.title;
 
     return title == undefined || title == "Top Picks" ? null : (
-      <div key={index}>
-        <div className="menu-heading">
-          <span>
-            {title}
-            {itemCards != undefined ? `(${itemCards.length})` : null}
-          </span>
-          <span
-            className="dropdown "
-            onClick={() => handleClick(index)}
+      <>
+        <div key={index}>
+          <div className="menu-heading">
+            <span>
+              {title}
+              {itemCards != undefined ? ` (${itemCards.length})` : null}
+            </span>
+            <span
+              className="dropdown "
+              onClick={() => handleClick(index)}
+              style={{
+                display: "inline-block", // Necessary for applying transform
+                transition: "transform 0.2s ease", // Smooth rotation transition
+                transform: rotatedIndexes[index]
+                  ? "rotate(0deg)"
+                  : "rotate(180deg)", // Rotate by 180 degrees when clicked
+              }}
+            >
+              <i className="fa-solid fa-chevron-down"></i>
+            </span>
+          </div>
+          <div
+            className="menu-section"
             style={{
-              display: "inline-block", // Necessary for applying transform
-              transition: "transform 0.2s ease", // Smooth rotation transition
-              transform: rotatedIndexes[index]
-                ? "rotate(0deg)"
-                : "rotate(180deg)", // Rotate by 180 degrees when clicked
+              height: collapsedIndexes[index] ? "0" : "", // Set height to 0 or 200px based on the state
+              overflow: "hidden", // Hide content when the height is 0
+              transition: "height 0.3s ease", // Smooth transition effect for height change
             }}
           >
-            <i className="fa-solid fa-chevron-down"></i>
-          </span>
+            {itemCards != undefined
+              ? itemCards.map((item, index) => {
+                  return (
+                    <RestaurantMenuCard
+                      key={item?.card?.info?.id || index}
+                      {...item?.card?.info}
+                    />
+                  );
+                })
+              : null}
+          </div>
         </div>
-        <div
-          className="menu-section"
-          style={{
-            height: collapsedIndexes[index] ? "0" : "", // Set height to 0 or 200px based on the state
-            overflow: "hidden", // Hide content when the height is 0
-            transition: "height 0.3s ease", // Smooth transition effect for height change
-          }}
-        >
-          {itemCards != undefined
-            ? itemCards.map((item, index) => {
-                return (
-                  <RestaurantMenuCard
-                    key={item?.card?.info?.id || index}
-                    {...item?.card?.info}
-                  />
-                );
-              })
-            : null}
-        </div>
-      </div>
+        <div className=" h-4 mr-3 my-auto bg-[#F2F2F3]"></div>
+      </>
     );
   });
 };
 
 export default RestaurantMenuCategory;
-
-/* 
-      {itemCards.map((item, index) => {
-        return (
-          <RestaurantMenuCard
-            key={item?.card?.info?.id || index}
-            {...item?.card?.info}
-          />
-        );
-      })} */
