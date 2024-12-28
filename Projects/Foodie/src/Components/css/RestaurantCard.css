@@ -1,37 +1,37 @@
 /* Gilroy Bold */
-@font-face {
+/* @font-face {
   font-family: "Gilroy-bold";
   src: url("/assets/fonts/gilroy-bold/Gilroy-Bold.ttf") format("truetype");
-}
+} */
 
 /* Gilroy Medium */
-@font-face {
+/* @font-face {
   font-family: "Gilroy-medium";
   src: url("/assets/fonts/gilroy-bold/Gilroy-Medium.ttf") format("truetype");
-}
+} */
 
 /* Gilroy Light */
-@font-face {
+/* @font-face {
   font-family: "Gilroy-light";
   src: url("/assets/fonts/gilroy-bold/Gilroy-Light.ttf") format("truetype");
-}
+} */
 
 /* Proxima Nova ExtraBold */
-@font-face {
+/* @font-face {
   font-family: "ProximaNova";
   src: url("/assets/fonts/ProximaNova/proximanova_extrabold.otf")
     format("opentype");
-}
+} */
 
 /* Proxima Nova Regular */
-@font-face {
+/* @font-face {
   font-family: "ProximaNova-regular";
   src: url("/assets/fonts/ProximaNova/proximanova_regular.ttf")
     format("truetype");
-}
+} */
 
 .card {
-  color: #02060ceb;
+  /* color: #02060ceb;
   margin-left: 20px;
   margin-top: 50px;
   overflow: hidden;
@@ -41,36 +41,36 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 3px;
-  cursor: pointer;
+  cursor: pointer; */
 
   transition: transform 0.2s ease;
   &:hover {
     transform: scale(0.93);
   }
 }
-.card .banner {
+/* .card .banner {
   width: 245px;
   height: 200px;
   position: relative;
   overflow: hidden;
   border-radius: 20px;
-}
-.card > .banner > img {
+} */
+/* .card > .banner > img {
   width: 100%;
   height: 100%;
 
   object-fit: cover;
   object-position: center;
-}
+} */
 .card .banner .offer-textbox {
-  position: absolute;
+  /* position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 45%;
+  height: 45%; */
   background: linear-gradient(rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%);
 }
-.card .banner .offer-textbox .offer {
+/* .card .banner .offer-textbox .offer {
   position: absolute;
   left: 0px;
   bottom: 0px;
@@ -87,10 +87,10 @@
   text-overflow: ellipsis;
   text-transform: uppercase;
   font-family: ProximaNova, arial, "Helvetica Neue", sans-serif;
-}
-.card .info {
+} */
+/* .card .info {
   padding: 10px;
-}
+} */
 .card .info .name {
   font-family: Gilroy-bold;
   font-size: 18px;

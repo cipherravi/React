@@ -16,13 +16,14 @@ const useResturantsMenu = (setDataForHeader, setDataForMenu) => {
         const apiDataForMenu =
           json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
         // Store data in state
+
         setDataForHeader(apiDataForHeader);
         setDataForMenu(apiDataForMenu);
       } else {
         throw new Error("Failed to Fetch Restaurant Menu Data");
       }
     } catch (error) {
-      console.error("Error fetching Restaurant Menu Data:", error);
+      console.error("Error fetching Restaurant Menu Data:", error.message);
     }
   }
   return { getRestaurantsMenu };

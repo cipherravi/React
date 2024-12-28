@@ -1,11 +1,10 @@
 import "./css/RestaurantMenu.css";
 import { useEffect, useState } from "react";
 
-import RestaurantMenuSection from "../Components/RestaurantMenuSection";
-import RestaurantMenuHeader from "../Components/RestaurantMenuHeader";
 import ShimmerMenu from "../Components/ShimmerMenu";
-
 import useResturantsMenu from "../utils/Hooks/useResturantsMenu";
+import RestaurantMenuHeader from "../Components/RestaurantMenuHeader";
+import RestaurantMenuSection from "../Components/RestaurantMenuSection";
 
 function RestaurantMenu() {
   const [dataForHeader, setDataForHeader] = useState([]);
