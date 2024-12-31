@@ -11,20 +11,25 @@ const RestaurantMenuCategory = ({ dataForMenu }) => {
   };
 
   return dataForMenu.map((item, index) => {
-    const itemCards = item?.card?.card.itemCards;
+    const itemCards = item?.card?.card?.itemCards;
+    const categories = item?.card?.card?.categories;
 
     const title = item?.card?.card?.title;
+    const categoriesTitle = item?.card?.card?.categories;
+    categoriesTitle?.map((category) => {
+      // category.
+    });
 
     return title == undefined || title == "Top Picks" ? null : (
       <>
         <div key={index}>
-          <div className="menu-heading">
+          <div className="menu-heading font-gilroy-bold text-lg text-[#151920] my-10  w-full flex justify-between items-center pr-7">
             <span>
               {title}
               {itemCards != undefined ? ` (${itemCards.length})` : null}
             </span>
             <span
-              className="dropdown "
+              className="dropdown font-gilroy-medium select-none text-lg cursor-pointer"
               onClick={() => handleClick(index)}
               style={{
                 display: "inline-block", // Necessary for applying transform
@@ -38,13 +43,14 @@ const RestaurantMenuCategory = ({ dataForMenu }) => {
             </span>
           </div>
           <div
-            className="menu-section"
+            className="menu-section mt-10 w-full"
             style={{
               height: collapsedIndexes[index] ? "0" : "", // Set height to 0 or 200px based on the state
               overflow: "hidden", // Hide content when the height is 0
               transition: "height 0.3s ease", // Smooth transition effect for height change
             }}
           >
+            {}
             {itemCards != undefined
               ? itemCards.map((item, index) => {
                   return (

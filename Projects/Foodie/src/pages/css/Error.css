@@ -1,4 +1,4 @@
-.error-container {
+/* .error-container {
   background-color: #bdbaba;
   width: 100vw;
   height: 100vh;
@@ -8,15 +8,16 @@
   flex-direction: column;
   gap: 20px;
   padding: 100px;
-}
-.error-container .error {
+} */
+
+/* .error-container .error {
   color: red;
 }
 .error-container img {
   width: 20vw;
   border-radius: 10px;
-}
-.error-container .error-msg {
+} */
+/* .error-container .error-msg {
   color: rgba(255, 255, 0, 0.723);
 }
 .error-container .suggestion {
@@ -24,4 +25,4 @@
 }
 .suggestion span {
   color: black;
-}
+} */
