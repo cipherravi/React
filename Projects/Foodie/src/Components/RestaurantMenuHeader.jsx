@@ -47,7 +47,7 @@ function RestaurantMenuHeader({ dataForHeader }) {
                 <span className="location text-sm">{areaName}</span>
               </div>
               <div className="duration font-gilroy-bold text-sm">
-                <span>{sla.slaString.toLowerCase()}</span>
+                <span>{sla?.slaString?.toLowerCase()}</span>
               </div>
             </div>
           </div>

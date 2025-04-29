@@ -20,7 +20,7 @@ function RestaurantMenu() {
     getRestaurantsMenu();
   }, []);
 
-  return dataForHeader.length != undefined ? (
+  return dataForHeader.length === 0 ? ( // If data is not fetched, show shimmer
     <ShimmerMenu />
   ) : (
     <>

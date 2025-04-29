@@ -12,13 +12,13 @@ const RestaurantMenuCategory = ({ dataForMenu }) => {
 
   return dataForMenu.map((item, index) => {
     const itemCards = item?.card?.card?.itemCards;
-    const categories = item?.card?.card?.categories;
+    // const categories = item?.card?.card?.categories;
 
     const title = item?.card?.card?.title;
-    const categoriesTitle = item?.card?.card?.categories;
-    categoriesTitle?.map((category) => {
-      // category.
-    });
+    // const categoriesTitle = item?.card?.card?.categories;
+    // categoriesTitle?.map((category) => {
+    //   // category.
+    // });
 
     return title == undefined || title == "Top Picks" ? null : (
       <>

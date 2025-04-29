@@ -6,6 +6,7 @@ import Error from "./pages/Error.jsx";
 import Offers from "./pages/Offers.jsx";
 import Help from "./pages/Help.jsx";
 import Login from "./pages/Login.jsx";
+import SignUp from "./pages/SignUp.jsx";
 import Cart from "./pages/Cart.jsx";
 import RestaurantMenu from "./pages/RestaurantMenu.jsx";
 import CardSection from "./Components/CardSection.jsx";
@@ -31,6 +32,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
       {
         path: "/cart",

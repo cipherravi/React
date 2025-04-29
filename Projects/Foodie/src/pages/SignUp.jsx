@@ -1,9 +1,7 @@
-import "./css/Login.css";
-
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-function Login() {
+const SignUp = () => {
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -18,7 +16,7 @@ function Login() {
       <div className="wrapper //area w-screen h-screen //layout flex justify-center items-center">
         <div className="box //layout flex flex-col justify-start items-center  //area w-[70%]  h-1/2  //responsive //start***  //area //visuals //end*** //visuals bg-[#fde6e6]  p-8 rounded-lg shadow-lg gap-5">
           <h1 className="form-heading //responsive //start***  //area   //visuals sm:text-3xl lg:text-4xl //end***  //visuals font-gilroy-bold text-2xl">
-            Login
+            Sign Up
           </h1>
           <input
             type="tel"
@@ -26,15 +24,23 @@ function Login() {
             required
             min="10"
             maxLength="10"
-            className="number-input //area w-[60%] h-[16%] //responsive //start*** sm:w-[45%] sm:h-1/6 md:w-[40%] lg:w-[34%] xl:w-[30%] //area   //visuals sm:text-base md:text-lg lg:text-xl  //end*** //mar-pad  p-3 //visuals outline-none rounded-md  text-sm"
+            className="number-input //area w-[60%] h-[10%] //responsive //start*** sm:w-[45%] sm:h-[10%] md:w-[40%] lg:w-[34%] xl:w-[30%] //area   //visuals sm:text-base //end*** //mar-pad  p-3 //visuals outline-none rounded-md  text-sm"
             value={value}
             onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            min="8"
+            maxLength="20"
+            className="password-input //area w-[60%] h-[10%] //responsive //start*** sm:w-[45%] sm:h-[10%] md:w-[40%] lg:w-[34%] xl:w-[30%] //area   //visuals sm:text-base   //end*** //mar-pad  p-3 //visuals outline-none rounded-md  text-sm"
           />
           <button
             type="submit"
             className="submit //area  w-[55%] h-[11%] //responsive //start***  sm:w-[45%] md:w-[40%] lg:w-[34%] xl:w-[30%] //area    //visuals //end***  //visuals  text-sm font-gilroy-medium bg-[#b80000] cursor-pointer text-white rounded-md border-none"
           >
-            Login
+            Create an account
           </button>
           <span className="term-condition //area w-full //responsive //start***  //area   //visuals //end***   //mar-pad px-0 //visuals font-gilroy-medium text-xs  text-center ">
             By clicking on Login, I accept the{" "}
@@ -44,9 +50,9 @@ function Login() {
           </span>
           <span className="create-account //visuals font-gilroy-medium text-sm">
             <span>or </span>
-            <Link to="/signup">
+            <Link to="/login">
               <span className="//visuals select-none font-gilroy-bold cursor-pointer">
-                create an account
+                Login
               </span>
             </Link>
           </span>
@@ -54,6 +60,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
-export default Login;
+export default SignUp;

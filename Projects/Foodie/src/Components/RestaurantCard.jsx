@@ -36,10 +36,10 @@ function RestrauntCards({
   return (
     <>
       <div
-        className="card text-[#02060ceb] ml-5 mt-12 overflow-hidden h-72 w-60 flex flex-col items-start gap-1 cursor-pointer"
+        className="card text-[#02060ceb] ml-5 mt-12 overflow-hidden h-72 w-60 flex flex-col items-start gap-1 cursor-pointer border-none"
         onClick={handleMenu}
       >
-        <div className="banner w-60 h-40 relative overflow-hidden rounded-2xl">
+        <div className="banner w-60 h-40 relative overflow-hidden rounded-2xl ">
           <img
             src={IMG_URL}
             style={{ height: url + cloudinaryImageId ? "" : "0px" }}

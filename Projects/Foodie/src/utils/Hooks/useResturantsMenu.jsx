@@ -2,14 +2,13 @@ import { useParams } from "react-router-dom";
 
 const useResturantsMenu = (setDataForHeader, setDataForMenu) => {
   const { id } = useParams();
-  console.log(id);
+
   async function getRestaurantsMenu() {
     try {
       const fetchedData = await fetch(
-        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.626227&lng=85.0974179&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
+        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59430&lng=85.13520&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
       );
-      // `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.626227&lng=85.0974179&restaurantId=659704&catalog_qa=undefined&submitAction=ENTER`;
-      // Check if fetch was successful
+
       if (fetchedData.ok) {
         const json = await fetchedData.json();
 

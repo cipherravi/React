@@ -1,5 +1,5 @@
 import "./css/Header.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { RestaurantSearchFilter } from "../utils/Context/RestaurantSearchFilterProvider";
 import { useContext } from "react";
 
@@ -15,7 +15,7 @@ function Logo() {
 
 function NavLinks() {
   const { searchInput, handleSearch } = useContext(RestaurantSearchFilter);
-
+  const location = useLocation();
   //Class of tailwind for styling----
   const commonLi =
     "flex items-center justify-center gap-2 no-underline list-none font-proxima-nova-regular text-base leading-[19.2px] cursor-pointer transition-transform duration-300 ease-in-out hover:scale-95 hover:text-[#b80000]";
@@ -26,13 +26,15 @@ function NavLinks() {
           <span>
             <i className="fa-solid fa-magnifying-glass text-lg"></i>
           </span>
-          <input
-            className="search-box rounded-md text-lg cursor-pointer w-32 border border-black transition-all duration-300 ease-in-out focus:w-52 focus:h-8"
-            type="text"
-            placeholder="Search"
-            value={searchInput}
-            onChange={handleSearch}
-          />
+          {location.pathname === "/" ? (
+            <input
+              className="search-box rounded-md text-lg cursor-pointer w-32 border border-black transition-all duration-300 ease-in-out focus:w-52 focus:h-8"
+              type="text"
+              placeholder="Search"
+              value={searchInput}
+              onChange={handleSearch}
+            />
+          ) : null}
         </li>
 
         <Link to="/offers">

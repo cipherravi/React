@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <RestaurantSearchFilterProvider />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
