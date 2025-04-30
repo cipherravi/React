@@ -14,7 +14,7 @@ const SignUp = () => {
   return (
     <div>
       <div className="wrapper //area w-screen h-screen //layout flex justify-center items-center">
-        <div className="box //layout flex flex-col justify-start items-center  //area w-[70%]  h-1/2  //responsive //start***  //area //visuals //end*** //visuals bg-[#fde6e6]  p-8 rounded-lg shadow-lg gap-5">
+        <div className="box //layout flex flex-col justify-start items-center  //area w-[70%]  h-1/2  //responsive //start*** sm:w-[45%] md:w-[40%] lg:w-[30%] xl:w-[28%] //area //visuals //end*** //visuals bg-[#fde6e6]  p-8 rounded-lg shadow-lg gap-5">
           <h1 className="form-heading //responsive //start***  //area   //visuals sm:text-3xl lg:text-4xl //end***  //visuals font-gilroy-bold text-2xl">
             Sign Up
           </h1>
@@ -24,7 +24,7 @@ const SignUp = () => {
             required
             min="10"
             maxLength="10"
-            className="number-input //area w-[60%] h-[10%] //responsive //start*** sm:w-[45%] sm:h-[10%] md:w-[40%] lg:w-[34%] xl:w-[30%] //area   //visuals sm:text-base //end*** //mar-pad  p-3 //visuals outline-none rounded-md  text-sm"
+            className="number-input //area w-[60%] h-[11%] //responsive //start*** sm:w-[52%] sm:h-[10%] md:w-[55%] lg:w-[56%] xl:w-[50%] //area   //visuals sm:text-base //end*** //mar-pad  p-3 //visuals outline-none rounded-md  text-sm"
             value={value}
             onChange={handleChange}
           />
@@ -34,11 +34,11 @@ const SignUp = () => {
             required
             min="8"
             maxLength="20"
-            className="password-input //area w-[60%] h-[10%] //responsive //start*** sm:w-[45%] sm:h-[10%] md:w-[40%] lg:w-[34%] xl:w-[30%] //area   //visuals sm:text-base   //end*** //mar-pad  p-3 //visuals outline-none rounded-md  text-sm"
+            className="password-input //area w-[60%] h-[11%] //responsive //start*** sm:w-[52%] sm:h-[10%] md:w-[55%] lg:w-[56%] xl:w-[50%] //area   //visuals sm:text-base   //end*** //mar-pad  p-3 //visuals outline-none rounded-md  text-sm"
           />
           <button
             type="submit"
-            className="submit //area  w-[55%] h-[11%] //responsive //start***  sm:w-[45%] md:w-[40%] lg:w-[34%] xl:w-[30%] //area    //visuals //end***  //visuals  text-sm font-gilroy-medium bg-[#b80000] cursor-pointer text-white rounded-md border-none"
+            className="submit //area  w-[55%] h-[13%] //responsive //start*** sm:w-[52%] sm:h-[10%] md:w-[55%] lg:w-[56%] xl:w-[50%] //area    //visuals //end***  //visuals  text-sm font-gilroy-medium bg-[#b80000] cursor-pointer text-white rounded-md border-none"
           >
             Create an account
           </button>
@@ -51,7 +51,7 @@ const SignUp = () => {
           <span className="create-account //visuals font-gilroy-medium text-sm">
             <span>or </span>
             <Link to="/login">
-              <span className="//visuals select-none font-gilroy-bold cursor-pointer">
+              <span className="  //visuals select-none font-gilroy-bold cursor-pointer">
                 Login
               </span>
             </Link>

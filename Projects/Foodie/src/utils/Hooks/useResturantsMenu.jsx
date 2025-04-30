@@ -6,7 +6,7 @@ const useResturantsMenu = (setDataForHeader, setDataForMenu) => {
   async function getRestaurantsMenu() {
     try {
       const fetchedData = await fetch(
-        `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.59430&lng=85.13520&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
+        `http://localhost:3000/api/restaurantmenudata/${id}`
       );
 
       if (fetchedData.ok) {
