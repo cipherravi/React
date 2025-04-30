@@ -18,8 +18,7 @@ function RestaurantMenuCard({
   } else {
     IMG_URL = null;
   }
-  // //layout //area //ressponsive //visuals
-  // //responsive **start //area  //mar-pad end**
+
   return (
     <>
       <div

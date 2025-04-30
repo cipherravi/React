@@ -23,7 +23,7 @@ const RestaurantMenuCategory = ({ dataForMenu }) => {
     return title == undefined || title == "Top Picks" ? null : (
       <>
         <div key={index}>
-          <div className="menu-heading font-gilroy-bold text-lg text-[#151920] my-10  w-full flex justify-between items-center pr-7">
+          <div className="menu-heading font-gilroy-bold text-sm lg:text-lg text-[#151920] my-10  w-full flex justify-between items-center pr-7">
             <span>
               {title}
               {itemCards != undefined ? ` (${itemCards.length})` : null}
