@@ -18,9 +18,9 @@ function CardSection() {
       <h1 className="font-gilroy-bold my-4 pl-16 text-2xl leading-7 tracking-[-0.4px] text-wrap text-[rgba(2,6,12,0.92)] sm:pl-16 md:pl-28 lg:pl-36 xl:pl-44 2xl:pl-48">
         Restaurants with online food delivery in Patna
       </h1>
-      <div className=" flex justify-center items-start ">
+      <div className="main flex justify-center items-center ">
         {/* Centering wrapper */}
-        <div className="cards-section min-h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+        <div className="cards-section px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {/* Grid layout for cards */}
           {allRestaurant.length < 1 ? (
             Array(8)
