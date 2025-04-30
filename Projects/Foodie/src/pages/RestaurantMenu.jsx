@@ -24,11 +24,11 @@ function RestaurantMenu() {
     <ShimmerMenu />
   ) : (
     <>
-      <div className="container pt-4 min-w-full min-h-full flex justify-center items-start">
-        <div className="box w-1/2 mt-5 pt-14">
+      <div className="mainContainer pt-4 w-full min-h-full flex justify-center  ">
+        <div className="box w-[85%] mt-5 pt-14 //responsive **start //area lg:w-1/2  //mar-pad lg:mt-5 lg:pt-14 end**">
           <RestaurantMenuHeader dataForHeader={dataForHeader} />
           <div className="menu mt-7 mb-5 w-full text-center">
-            <span className="font-gilroy-medium">-Menu-</span>
+            <span className="//visuals font-gilroy-medium">-Menu-</span>
           </div>
           <div className="search-bar w-full relative">
             <input
