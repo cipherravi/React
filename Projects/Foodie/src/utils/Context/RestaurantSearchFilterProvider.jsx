@@ -1,5 +1,3 @@
-import Header from "../../Components/Header";
-import { Outlet } from "react-router-dom";
 import { useState, useEffect, createContext } from "react";
 import useRestaurants from "../Hooks/useRestaurants";
 import useRestaurantFilteredData from "../Hooks/useRestaurantFilteredData";
@@ -8,7 +6,7 @@ import useIntervalRefresh from "../Hooks/useIntervalRefresh";
 // Create a context
 const RestaurantSearchFilter = createContext();
 
-function RestaurantSearchFilterProvider() {
+function RestaurantSearchFilterProvider({ children }) {
   const [allRestaurant, setAllRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState(allRestaurant);
   const [searchInput, setSearchInput] = useState("");
@@ -67,8 +65,7 @@ function RestaurantSearchFilterProvider() {
         handleSearch,
       }}
     >
-      <Header />
-      <Outlet />
+      {children}
     </RestaurantSearchFilter.Provider>
   );
 }

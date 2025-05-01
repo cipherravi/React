@@ -7,7 +7,8 @@ import RestaurantSearchFilterProvider from "./utils/Context/RestaurantSearchFilt
 function App() {
   return (
     <>
-      <RestaurantSearchFilterProvider />
+      <Header />
+      <Outlet />
       {/* <Footer /> */}
     </>
   );

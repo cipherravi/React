@@ -1,6 +1,6 @@
 import "./css/Header.css";
 import { Link, useLocation } from "react-router-dom";
-import { RestaurantSearchFilter } from "../utils/Context/RestaurantSearchFilterProvider";
+import { RestaurantSearchFilter } from "../utils/Context/RestaurantSearchFilterProvider.jsx";
 import { useContext } from "react";
 
 function Logo() {
@@ -16,70 +16,78 @@ function Logo() {
 function NavLinks() {
   const { searchInput, handleSearch } = useContext(RestaurantSearchFilter);
   const location = useLocation();
-
+  //Class of tailwind for styling----
   const commonLi =
-    "flex items-center justify-center gap-2 no-underline list-none font-proxima-nova-regular text-base leading-5 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-95 hover:text-[#b80000]";
-
+    "flex items-center justify-center gap-2 no-underline list-none font-proxima-nova-regular text-base leading-5 cursor-pointer transition-transform duration-300 ease-in-out hover:scale-95 hover:text-[#b80000]  responsive **start //area    //mar-pad //visuals lg:gap-2  end**";
   return (
-    <ul className="nav-list hidden sm:flex h-7 justify-center items-center gap-14 lg:h-7 lg:gap-14">
-      <li className={`${commonLi} search-box`}>
-        <i className="fa-solid fa-magnifying-glass text-lg"></i>
-        {location.pathname === "/" && (
-          <input
-            className="search-box rounded-md text-lg cursor-pointer w-32 border border-black transition-all duration-300 ease-in-out focus:w-52 focus:h-8 lg:w-32 lg:focus:w-52 lg:focus:h-8"
-            type="text"
-            placeholder="Search"
-            value={searchInput}
-            onChange={handleSearch}
-          />
-        )}
-      </li>
+    <>
+      <ul className=" nav-list hidden  sm:flex h-7 justify-center items-center gap-14 //responsive **start //area lg:h-7 //mar-pad //visuals lg:gap-14 end**">
+        <li className={`${commonLi} search-box`}>
+          <span>
+            <i className="fa-solid fa-magnifying-glass text-lg"></i>
+          </span>
+          {location.pathname === "/" ? (
+            <input
+              className="search-box rounded-md text-lg cursor-pointer w-32 border border-black transition-all duration-300 ease-in-out focus:w-52 focus:h-8 //responsive **start //area lg:w-32 //mar-pad //visuals lg:focus-w-52 lg:focus-h-8 end**"
+              type="text"
+              placeholder="Search"
+              value={searchInput}
+              onChange={handleSearch}
+            />
+          ) : null}
+        </li>
 
-      <li className={commonLi}>
-        <Link to="/offers" className="flex items-center gap-2">
-          <i className="fa-solid fa-tags lg:text-lg"></i> Offers
+        <Link to="offers">
+          <li className={`${commonLi}`}>
+            <span>
+              <i className="fa-solid fa-tags lg:text-lg"></i>
+            </span>
+            Offers
+          </li>
         </Link>
-      </li>
 
-      <li className={commonLi}>
-        <Link to="/help" className="flex items-center gap-2">
-          <i className="fa-solid fa-circle-h lg:text-lg"></i> Help
+        <Link to="help">
+          <li className={`${commonLi}`}>
+            <span>
+              <i className="fa-solid fa-circle-h lg:text-lg"></i>
+            </span>
+            Help
+          </li>
         </Link>
-      </li>
 
-      <li className={commonLi}>
-        <Link to="/login" className="flex items-center gap-2">
-          <i className="fa-regular fa-user lg:text-lg"></i> Sign In
+        <Link to="login">
+          <li className={`${commonLi}`}>
+            <span>
+              <i className="fa-regular fa-user lg:text-lg"></i>
+            </span>
+            Sign In
+          </li>
         </Link>
-      </li>
 
-      <li className={commonLi}>
-        <Link to="/cart" className="flex items-center gap-2">
-          <i className="fa-solid fa-cart-shopping lg:text-lg"></i> Cart
+        <Link to="cart">
+          <li className={`${commonLi}`}>
+            <span>
+              <i className="fa-solid fa-cart-shopping lg:text-lg"></i>
+            </span>
+            Cart
+          </li>
         </Link>
-      </li>
-    </ul>
-  );
-}
-
-function HamburgerMenu() {
-  return (
-    <div className="block sm:hidden">
-      <button>
-        <i className="fa-solid fa-bars text-2xl"></i>
-      </button>
-    </div>
+        <li className="block sm:hidden">
+          <span>
+            <i className="fa-solid fa-bars lg:text-lg"></i>
+          </span>
+        </li>
+      </ul>
+    </>
   );
 }
 
 function Header() {
   return (
-    <div className="header w-full min-h-20 fixed flex justify-between items-center px-6 sm:px-10 lg:px-24 z-[1000] bg-white shadow-md">
+    <div className=" header w-full min-h-20 fixed flex justify-between items-center px-24 z-[1000] bg-white shadow-md //responsive **start //area lg:min-h-20  //mar-pad lg:px-24  end**">
       <Logo />
       <NavLinks />
-      <HamburgerMenu />
     </div>
   );
 }
-
 export default Header;
