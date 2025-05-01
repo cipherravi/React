@@ -1,5 +1,5 @@
 import "./css/RestaurantCard.css";
-import { url } from "./Constant";
+import { url } from "../utils/Constant";
 import { useNavigate } from "react-router-dom";
 
 function RestrauntCards({

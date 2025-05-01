@@ -5,12 +5,8 @@ import { RestaurantSearchFilter } from "../utils/Context/RestaurantSearchFilterP
 import { useContext } from "react";
 
 function CardSection() {
-  const { allRestaurant = [], filteredRestaurant = [] } = useContext(
+  const { allRestaurant, filteredRestaurant } = useContext(
     RestaurantSearchFilter
-  );
-  sessionStorage.setItem("allRestaurant", JSON.stringify(allRestaurant));
-  const storedAllRestaurant = JSON.parse(
-    sessionStorage.getItem("allRestaurant")
   );
 
   return (
@@ -19,17 +15,13 @@ function CardSection() {
         Restaurants with online food delivery in Patna
       </h1>
       <div className="main flex justify-center items-center ">
-        {/* Centering wrapper */}
         <div className="cards-section px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {/* Grid layout for cards */}
-          {allRestaurant.length < 1 ? (
+          {!Array.isArray(allRestaurant) || allRestaurant.length === 0 ? (
             Array(8)
               .fill("")
-              .map((_, index) => {
-                return <Shimmer key={index} />;
-              })
+              .map((_, index) => <Shimmer key={index} />)
           ) : filteredRestaurant?.length > 0 ? (
-            filteredRestaurant?.map((restaurant) => (
+            filteredRestaurant.map((restaurant) => (
               <RestaurantCard
                 key={restaurant?.info?.id}
                 {...restaurant?.info}
