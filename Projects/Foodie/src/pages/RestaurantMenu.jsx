@@ -25,7 +25,7 @@ function RestaurantMenu() {
   ) : (
     <>
       <div className="mainContainer pt-4 w-full min-h-full flex justify-center  ">
-        <div className="box w-[85%] mt-5 pt-14 //responsive **start //area lg:w-1/2  //mar-pad lg:mt-5 lg:pt-14 end**">
+        <div className="box w-[85%] mt-5 pt-14 //responsive **start //area lg:w-[55%]  //mar-pad lg:mt-5 lg:pt-14 end**">
           <RestaurantMenuHeader dataForHeader={dataForHeader} />
           <div className="menu mt-7 mb-5 w-full text-center">
             <span className="//visuals font-gilroy-medium text-xs lg:text-base">

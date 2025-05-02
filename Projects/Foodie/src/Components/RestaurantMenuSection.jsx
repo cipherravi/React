@@ -1,7 +1,6 @@
 import "./css/RestaurantMenuSection.css";
 import { useEffect, useState } from "react";
 import RestaurantMenuCategory from "./RestaurantMenuCategory";
-import { data } from "react-router-dom";
 
 function RestaurantMenuSection({ dataForMenu }) {
   const [restaurantMenuData, setRestaurantMenuData] = useState("");

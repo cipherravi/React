@@ -26,7 +26,7 @@ function RestaurantMenuCard({
        //responsive **start //area lg:w-full lg:min-h-[40] //mar-pad lg:p-4 end**"
       >
         <div className="item-info //layout flex flex-col //area max-w-[50%] //visuals pr-2 gap-1 //responsive **start //area lg:w-[70%]  //mar-pad end**">
-          <h3 className="item-name //visuals font-gilroy-bold text-base">
+          <h3 className="item-name //visuals font-gilroy-bold text-base lg:text-lg">
             {name}
           </h3>
           <h3 className="item-price //visuals font-gilroy-medium text-base">

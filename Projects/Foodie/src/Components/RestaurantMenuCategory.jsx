@@ -1,72 +1,143 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RestaurantMenuCard from "./RestaurantMenuCard";
 
 const RestaurantMenuCategory = ({ dataForMenu }) => {
   const [rotatedIndexes, setRotatedIndexes] = useState({});
   const [collapsedIndexes, setCollapsedIndexes] = useState({});
+  const [finalData, setFinalData] = useState([]);
 
   const handleClick = (index) => {
     setRotatedIndexes((prev) => ({ ...prev, [index]: !prev[index] }));
     setCollapsedIndexes((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
-  return dataForMenu.map((item, index) => {
-    const itemCards = item?.card?.card?.itemCards;
-    // const categories = item?.card?.card?.categories;
+  // Extract all nested cards from categories & itemCards , it only once
+  useEffect(() => {
+    const items = [];
 
-    const title = item?.card?.card?.title;
-    // const categoriesTitle = item?.card?.card?.categories;
-    // categoriesTitle?.map((category) => {
-    //   // category.
-    // });
+    dataForMenu.forEach((item) => {
+      const categories = item?.card?.card?.categories;
+      const itemCards = item?.card?.card?.itemCards;
+      itemCards?.forEach((card) => {
+        if (card?.card?.info) {
+          items.push(card.card.info);
+        }
+      });
+      // If categories exist, extract itemCards from them
 
-    return title == undefined || title == "Top Picks" ? null : (
-      <>
-        <div key={index}>
-          <div className="menu-heading font-gilroy-bold text-sm lg:text-lg text-[#151920] my-10  w-full flex justify-between items-center pr-7">
-            <span>
-              {title}
-              {itemCards != undefined ? ` (${itemCards.length})` : null}
-            </span>
-            <span
-              className="dropdown font-gilroy-medium select-none text-lg cursor-pointer"
-              onClick={() => handleClick(index)}
+      categories?.forEach((category) => {
+        category?.itemCards?.forEach((card) => {
+          if (card?.card?.info) {
+            items.push(card.card.info);
+          }
+        });
+      });
+    });
+
+    setFinalData(items);
+  }, [dataForMenu]);
+
+  return (
+    <>
+      {dataForMenu.map((item, index) => {
+        const categories = item?.card?.card?.categories;
+        const itemCards = item?.card?.card?.itemCards;
+        const title = item?.card?.card?.title;
+        // console.log(title);
+
+        if (!title || title === "Top Picks") return null;
+
+        const sectionKey = `item-${index}`;
+
+        return (
+          <div key={sectionKey}>
+            <div className="menu-heading font-gilroy-bold text-sm lg:text-lg text-[#151920] my-10 w-full flex justify-between items-center pr-7">
+              <span>
+                {title}
+                {itemCards ? ` (${itemCards.length})` : null}
+              </span>
+              <span
+                className="dropdown font-gilroy-medium select-none text-lg cursor-pointer"
+                onClick={() => handleClick(sectionKey)}
+                style={{
+                  display: "inline-block",
+                  transition: "transform 0.2s ease",
+                  transform: rotatedIndexes[sectionKey]
+                    ? "rotate(0deg)"
+                    : "rotate(180deg)",
+                }}
+              >
+                <i className="fa-solid fa-chevron-down"></i>
+              </span>
+            </div>
+
+            <div
+              className="menu-section mt-10 w-full"
               style={{
-                display: "inline-block", // Necessary for applying transform
-                transition: "transform 0.2s ease", // Smooth rotation transition
-                transform: rotatedIndexes[index]
-                  ? "rotate(0deg)"
-                  : "rotate(180deg)", // Rotate by 180 degrees when clicked
+                height: collapsedIndexes[sectionKey] ? "0" : "auto",
+                overflow: "hidden",
+                transition: "height 0.3s ease",
               }}
             >
-              <i className="fa-solid fa-chevron-down"></i>
-            </span>
-          </div>
-          <div
-            className="menu-section mt-10 w-full"
-            style={{
-              height: collapsedIndexes[index] ? "0" : "", // Set height to 0 or 200px based on the state
-              overflow: "hidden", // Hide content when the height is 0
-              transition: "height 0.3s ease", // Smooth transition effect for height change
-            }}
-          >
-            {}
-            {itemCards != undefined
-              ? itemCards.map((item, index) => {
-                  return (
+              {categories?.length > 0
+                ? categories.map((category, catIdx) => {
+                    const categoryKey = `cat-${index}-${catIdx}`;
+                    return (
+                      <div key={category?.categoryId || category?.title}>
+                        <div className="category-title font-gilroy-bold text-sm lg:text-base text-[#151920] my-3 w-full flex justify-between items-center pr-7">
+                          <span>
+                            {category?.title}
+                            {category?.itemCards
+                              ? ` (${category?.itemCards.length})`
+                              : null}
+                          </span>
+                          <span
+                            className="dropdown font-gilroy-medium select-none text-lg cursor-pointer"
+                            onClick={() => handleClick(categoryKey)}
+                            style={{
+                              display: "inline-block",
+                              transition: "transform 0.2s ease",
+                              transform: rotatedIndexes[categoryKey]
+                                ? "rotate(180deg)"
+                                : "rotate(0deg)",
+                            }}
+                          >
+                            <i className="fa-solid fa-chevron-down"></i>
+                          </span>
+                        </div>
+                        <div className="h-0.5 mr-3 my-auto bg-[#F2F2F3]"></div>
+                        <div
+                          className="menu-section mt-10 w-full"
+                          style={{
+                            height: collapsedIndexes[categoryKey] ? "auto" : 0,
+                            overflow: "hidden",
+                            transition: "height 0.3s ease",
+                          }}
+                        >
+                          {category?.itemCards?.map((item) => (
+                            <RestaurantMenuCard
+                              key={item?.card?.info?.id}
+                              {...item?.card?.info}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })
+                : itemCards?.map((item) => (
                     <RestaurantMenuCard
-                      key={item?.card?.info?.id || index}
+                      key={item?.card?.info?.id}
                       {...item?.card?.info}
                     />
-                  );
-                })
-              : null}
+                  ))}
+            </div>
+
+            <div className="h-4 mr-3 my-auto bg-[#F2F2F3]"></div>
           </div>
-        </div>
-        <div className=" h-4 mr-3 my-auto bg-[#F2F2F3]"></div>
-      </>
-    );
-  });
+        );
+      })}
+    </>
+  );
 };
 
 export default RestaurantMenuCategory;
