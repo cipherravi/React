@@ -5,6 +5,7 @@ import ShimmerMenu from "../Components/ShimmerMenu";
 import useResturantsMenu from "../utils/Hooks/useResturantsMenu";
 import RestaurantMenuHeader from "../Components/RestaurantMenuHeader";
 import RestaurantMenuSection from "../Components/RestaurantMenuSection";
+import useAllCards from "../utils/Hooks/useAllCards";
 
 function RestaurantMenu() {
   const [dataForHeader, setDataForHeader] = useState([]);
@@ -15,6 +16,7 @@ function RestaurantMenu() {
     setDataForHeader,
     setDataForMenu
   );
+  const { finalData } = useAllCards({ dataForMenu });
 
   useEffect(() => {
     getRestaurantsMenu();

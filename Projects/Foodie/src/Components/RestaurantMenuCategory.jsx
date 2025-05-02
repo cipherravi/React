@@ -1,41 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import RestaurantMenuCard from "./RestaurantMenuCard";
 
 const RestaurantMenuCategory = ({ dataForMenu }) => {
   const [rotatedIndexes, setRotatedIndexes] = useState({});
   const [collapsedIndexes, setCollapsedIndexes] = useState({});
-  const [finalData, setFinalData] = useState([]);
 
   const handleClick = (index) => {
     setRotatedIndexes((prev) => ({ ...prev, [index]: !prev[index] }));
     setCollapsedIndexes((prev) => ({ ...prev, [index]: !prev[index] }));
   };
-
-  // Extract all nested cards from categories & itemCards , it only once
-  useEffect(() => {
-    const items = [];
-
-    dataForMenu.forEach((item) => {
-      const categories = item?.card?.card?.categories;
-      const itemCards = item?.card?.card?.itemCards;
-      itemCards?.forEach((card) => {
-        if (card?.card?.info) {
-          items.push(card.card.info);
-        }
-      });
-      // If categories exist, extract itemCards from them
-
-      categories?.forEach((category) => {
-        category?.itemCards?.forEach((card) => {
-          if (card?.card?.info) {
-            items.push(card.card.info);
-          }
-        });
-      });
-    });
-
-    setFinalData(items);
-  }, [dataForMenu]);
 
   return (
     <>
@@ -43,7 +16,6 @@ const RestaurantMenuCategory = ({ dataForMenu }) => {
         const categories = item?.card?.card?.categories;
         const itemCards = item?.card?.card?.itemCards;
         const title = item?.card?.card?.title;
-        // console.log(title);
 
         if (!title || title === "Top Picks") return null;
 

@@ -6,7 +6,7 @@ const useResturantsMenu = (setDataForHeader, setDataForMenu) => {
   async function getRestaurantsMenu() {
     try {
       const fetchedData = await fetch(
-        `https://foodie-backend-so1x.onrender.com/api/restaurantmenudata/${id}`
+        `https://foodie-backend-so1x.onrender.com/api/v1/restaurant/${id}`
       );
 
       if (fetchedData.ok) {
