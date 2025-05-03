@@ -15,7 +15,7 @@ function Login() {
   };
   return (
     <div>
-      <div className="wrapper //area w-screen h-screen //layout flex justify-center items-center">
+      <div className="wrapper //area w-screen min-h-screen //layout flex justify-center items-center">
         <div className="box //layout flex flex-col justify-start items-center  //area w-[70%]  h-1/2 //responsive //start*** sm:w-[45%] md:w-[40%] lg:w-[30%] xl:w-[28%] //area //visuals //end*** //visuals bg-[#fde6e6]  p-8 rounded-lg shadow-lg gap-5">
           <h1 className="form-heading //responsive //start***  //area   //visuals sm:text-3xl  //end***  //visuals font-gilroy-bold text-2xl">
             Login

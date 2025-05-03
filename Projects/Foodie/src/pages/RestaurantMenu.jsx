@@ -5,25 +5,33 @@ import ShimmerMenu from "../Components/ShimmerMenu";
 import useResturantsMenu from "../utils/Hooks/useResturantsMenu";
 import RestaurantMenuHeader from "../Components/RestaurantMenuHeader";
 import RestaurantMenuSection from "../Components/RestaurantMenuSection";
+import RestaurantMenuCard from "../Components/RestaurantMenuCard";
 import useAllCards from "../utils/Hooks/useAllCards";
+import useItemFilter from "../utils/Hooks/useItemFilter";
 
 function RestaurantMenu() {
   const [dataForHeader, setDataForHeader] = useState([]);
   const [dataForMenu, setDataForMenu] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   const { getRestaurantsMenu } = useResturantsMenu(
     setDataForHeader,
     setDataForMenu
   );
   const { finalData } = useAllCards({ dataForMenu });
+  console.log(finalData);
 
   useEffect(() => {
     getRestaurantsMenu();
   }, []);
+  useEffect(() => {
+    const { filteredData } = useItemFilter(finalData, searchInput);
+    setFilteredData(filteredData);
+  }, [searchInput]);
 
-  return dataForHeader.length === 0 ? ( // If data is not fetched, show shimmer
-    <ShimmerMenu />
+  return dataForHeader.length === 0 ? (
+    <ShimmerMenu /> // If data is not fetched, show shimmer
   ) : (
     <>
       <div className="mainContainer pt-4 w-full min-h-full flex justify-center  ">
@@ -48,7 +56,17 @@ function RestaurantMenu() {
           </div>
           <div className="horizontal-rule"></div>
           <div>
-            <RestaurantMenuSection dataForMenu={dataForMenu} />
+            {searchInput.length === 0 ? (
+              <RestaurantMenuSection dataForMenu={dataForMenu} />
+            ) : filteredData?.length > 0 ? (
+              filteredData?.map((item) => {
+                return <RestaurantMenuCard key={item?.id} {...item} />;
+              })
+            ) : (
+              <div className="w-full min-h-32 flex justify-center items-center  text-xl font-proxima-nova-regular">
+                <p>No restaurants found matching your search.</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

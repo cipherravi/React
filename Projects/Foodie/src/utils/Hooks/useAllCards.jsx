@@ -24,8 +24,12 @@ const useAllCards = ({ dataForMenu }) => {
         });
       });
     });
+    // ✅ Deduplicate by item.id
+    const uniqueItems = Array.from(
+      new Map(items.map((item) => [item.id, item])).values()
+    );
 
-    setFinalData(items);
+    setFinalData(uniqueItems);
   }, [dataForMenu]);
   return { finalData };
 };

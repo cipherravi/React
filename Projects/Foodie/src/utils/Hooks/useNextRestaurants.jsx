@@ -1,5 +1,5 @@
 const useNextRestaurants = () => {
-  async function getNextRestaurants() {
+  async function getNextRestaurants(setAllRestaurant) {
     try {
       const sessionId = sessionStorage.getItem("sessionId"); // Retrieve sessionId from sessionStorage
 
@@ -9,7 +9,7 @@ const useNextRestaurants = () => {
       const fetchedData = await fetch(
         "https://foodie-backend-so1x.onrender.com/api/v1/restaurants/update",
         {
-          method: POST,
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -26,6 +26,8 @@ const useNextRestaurants = () => {
         const apiDataPath =
           json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants;
+
+        setAllRestaurant((prev) => [...prev, ...apiDataPath]);
       } else {
         throw new Error("Failed to Fetch More Restaurants");
       }
@@ -35,3 +37,4 @@ const useNextRestaurants = () => {
   }
   return { getNextRestaurants };
 };
+export default useNextRestaurants;
