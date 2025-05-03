@@ -8,9 +8,11 @@ const useRestaurants = () => {
       // Check if fetch was successful
       if (fetchedData.ok) {
         const json = await fetchedData.json();
+        // Store the sessionId in sessionStorage
+        sessionStorage.setItem("sessionId", json.sessionId);
 
         const apiDataPath =
-          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          json?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants;
 
         // Store data in state and localStorage
